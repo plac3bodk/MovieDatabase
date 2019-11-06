@@ -35,6 +35,7 @@ Please choose what you want to do...
 
 movies_list = []
 
+# TODO: Split title, director ond year into separat funtions and consolidate in add_movie
 
 def add_movie():
     movie_title = input("Type in movie title:")
