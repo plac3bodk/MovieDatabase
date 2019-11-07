@@ -79,11 +79,10 @@ def release_year():
 
 # Add Movie function
 def add_movie():
+    i = int(input("id"))
     movie_title()
     movie_director()
     release_year()
-    global i
-    i = 0
     movie_list.append({
         'id': i,
         'title': title,
@@ -111,14 +110,18 @@ def list_movies():
 
 
 def list_movie_details(movie):
-    print(f"{movie['id']}Name: {movie['title']} \nDirector: {movie['director']} \nRelease year: {movie['year']}\n")
-    i = i + 1
+    print(f"Name: {movie['title']} \nDirector: {movie['director']} \nRelease year: {movie['year']}\n")
 
 
 def remove_movie():
     remove_movie_input = input("Type which movie to remove")
-    print(remove_movie_input)
-    movie_list.remove(remove_movie_input)
+    for i in range(len(movie_list)):
+        if movie_list[i]['id'] == remove_movie_input:
+            del movie_list[i]
+            print(movie_list[i], "removed successfully!")
+            break
+            print(movie_list)
+            menu()
 
 
 menu()
