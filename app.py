@@ -38,7 +38,7 @@ Q. Exit Movie Database
     elif menu_init == "E" or menu_init == "e":
         pass
     elif menu_init == "R" or menu_init == "r":
-        pass
+        remove_movie()
     elif menu_init == "S" or menu_init == "s":
         pass
     else:
@@ -82,7 +82,10 @@ def add_movie():
     movie_title()
     movie_director()
     release_year()
+    global i
+    i = 0
     movie_list.append({
+        'id': i,
         'title': title,
         'director': director,
         'year': year
@@ -108,8 +111,14 @@ def list_movies():
 
 
 def list_movie_details(movie):
-    print(f"Name: {movie['title']} \nDirector: {movie['director']} \nRelease year: {movie['year']}\n")
+    print(f"{movie['id']}Name: {movie['title']} \nDirector: {movie['director']} \nRelease year: {movie['year']}\n")
+    i = i + 1
 
+
+def remove_movie():
+    remove_movie_input = input("Type which movie to remove")
+    print(remove_movie_input)
+    movie_list.remove(remove_movie_input)
 
 
 menu()
