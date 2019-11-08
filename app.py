@@ -9,6 +9,7 @@ Tasks
 [] Search movies
 [] Exit program
 """
+from builtins import int
 
 print("""
     #############################################################################################################
@@ -104,7 +105,7 @@ What would you like to do now?
 def list_movies():
     for movie in movie_list:
         list_movie_details(movie)
-        menu()
+    menu()
 
 
 def list_movie_details(movie):
