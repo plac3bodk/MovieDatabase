@@ -5,9 +5,9 @@ Tasks
 [x] Add movies
 [x] List movies
 [] Edit movies
-[] Remove movies
+[x] Remove movies
 [] Search movies
-[] Exit program
+[x] Exit program
 """
 
 print("""
@@ -16,10 +16,11 @@ print("""
     #############################################################################################################
 """)
 
+# The list where all movies will be stored
 movie_list = []
 
 
-def menu():
+def menu():  # App main menu
     menu_init = input("""
 Please choose what you want to do:
 A. Add movie
@@ -28,20 +29,24 @@ E. Edit movie
 R. Remove movie
 S. Search for a movie
 Q. Exit Movie Database
-    
 """)
 
     if menu_init == "A" or menu_init == "a":
-        add_movie()
+        add_movie()  # Run add_movie function
     elif menu_init == "L" or menu_init == "l":
-        list_movies()
+        list_movies()  # Run list_movies function
     elif menu_init == "E" or menu_init == "e":
-        pass
+        edit_movie()  # Run edit_movie function
     elif menu_init == "R" or menu_init == "r":
-        pass
+        remove_movie()  # Run remove_movie function
     elif menu_init == "S" or menu_init == "s":
-        pass
-    else:
+        pass  # Run search_movie function
+    elif menu_init == "Q" or menu_init == "q":
+        # Quit application
+        print("Application stopped")
+        print("\nSee you next time!")
+        exit()
+    else:  # Wrong input. Rerun app main menu
         print("That is not a valid selection...")
         print("Please try again")
         menu()
@@ -87,7 +92,6 @@ def add_movie():
         'director': director,
         'year': year
     })
-    print(movie_list)
     print("Movie added!")
     add_movie_menu = input("""
 What would you like to do now?
@@ -104,12 +108,35 @@ What would you like to do now?
 def list_movies():
     for movie in movie_list:
         list_movie_details(movie)
-        menu()
+    menu()
 
 
 def list_movie_details(movie):
-    print(f"Name: {movie['title']} \nDirector: {movie['director']} \nRelease year: {movie['year']}\n")
+    print(f"""
+Name: {movie['title']} 
+Director: {movie['director']} 
+Release year: {movie['year']}
+""")
 
+
+def edit_movie():
+    edit_movie_input = input("Type which movie you want to edit")
+    for i in range(len(movie_list)):
+        if movie_list[i]['title'] == edit_movie_input:
+            print(movie_list[i]['title'], "removed successfully!")
+            del movie_list[i]
+            menu()
+            break
+
+
+def remove_movie():
+    remove_movie_input = input("Type which movie to remove")
+    for i in range(len(movie_list)):
+        if movie_list[i]['title'] == remove_movie_input:
+            print(movie_list[i]['title'], "removed successfully!")
+            del movie_list[i]
+            menu()
+            break
 
 
 menu()
