@@ -29,7 +29,6 @@ E. Edit movie
 R. Remove movie
 S. Search for a movie
 Q. Exit Movie Database
-    
 """)
 
     if menu_init == "A" or menu_init == "a":
